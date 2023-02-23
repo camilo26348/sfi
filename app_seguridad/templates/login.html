@@ -1,0 +1,74 @@
+{% extends 'base_login.html' %}
+{% block content %}
+
+    <!-- Register -->
+          <div class="card">
+            <div class="card-body">
+              <!-- Logo -->
+              <div class="app-brand justify-content-center">
+                <a href="#" class="app-brand-link gap-2">
+                  <span class="app-brand-logo demo">
+
+                  </span>
+                  <span class="app-brand-text demo text-body fw-bolder">SFI</span>
+                </a>
+              </div>
+              <!-- /Logo -->
+{#              {% if notif %}#}
+{#                {% for message in notif %}#}
+{#                    <div class="alert alert-secondary" role="alert"><strong>{{ message }}</strong></div>#}
+{#                {% endfor %}#}
+{#              {% endif %}#}
+{#              <h4 class="mb-2">{{ subtitle }}</h4>#}
+
+              {% if notif %}
+                {% for message in notif %}
+                    <h4 class="mb-2">{{ message }}</h4>
+                {% endfor %}
+              {% else %}
+                  <h4 class="mb-2">{{ subtitle }}</h4>
+              {% endif %}
+
+              <p class="mb-4">Por favor inicie sesión con sus datos para poder usar el sistema</p>
+
+              <form class="mb-3" method="POST">{% csrf_token %}
+                <div class="mb-3">
+                  <label for="email" class="form-label">Usuario</label>
+                  <input type="text" tabindex=1 class="form-control" id="username" name="username" placeholder="Escriba su usuario" required/>
+                </div>
+                <div class="mb-3 form-password-toggle">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label" for="password">Contraseña</label>
+                    {% if error %}{% else %}<a href="{% url 'clave_olvidada' %}"><small>¿Olvidó su contraseña?</small></a>{% endif %}
+                  </div>
+                  <div class="input-group input-group-merge">
+                    <input type="password" tabindex=2 id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" required/>
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
+                </div>
+                {% if error %}
+                  <div class="alert alert-danger" role="alert"><small>{{ error }}. <a href="{% url 'clave_olvidada' %}">¿Olvidó su contraseña?</a></small></div>
+                {% endif %}
+                {% if notif_pend %}
+                  <div class="alert alert-primary" role="alert"><small>{{ notif_pend }}</small></div>
+                {% endif %}
+                {% if notif_desact %}
+                  <div class="alert alert-warning" role="alert"><small>{{ notif_desact }}</small></div>
+                {% endif %}
+                <div class="mb-3">
+                  <button tabindex=3 class="btn btn-primary d-grid w-100" type="submit">Iniciar sesión</button>
+                </div>
+              </form>
+
+{#              <p class="text-center">#}
+{#                <span>¿Es nuevo en el sistema?</span>#}
+{#                <a href="{% url 'registro' %}">#}
+{#                  <span>Cree una cuenta</span>#}
+{#                </a>#}
+{#              </p>#}
+
+            </div>
+          </div>
+          <!-- /Register -->
+
+{% endblock %}

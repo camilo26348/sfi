@@ -1,0 +1,41 @@
+{% extends 'base_login.html' %}
+{% block content %}
+          <!-- Forgot Password -->
+          <div class="card">
+            <div class="card-body">
+              <!-- Logo -->
+              <div class="app-brand justify-content-center">
+                <a href="#" class="app-brand-link gap-2">
+                  <span class="app-brand-logo demo">
+
+                  </span>
+                  <span class="app-brand-text demo text-body fw-bolder">miContab</span>
+                </a>
+              </div>
+              <!-- /Logo -->
+              <h4 class="mb-2">{{ subtitle }}</h4>
+              <p class="mb-4">Escriba su correo, le enviaremos las instrucciones para una nueva contraseña</p>
+              <form id="formAuthentication" class="mb-3" method="POST">{% csrf_token %}
+                <div class="mb-3">
+                  <label for="email" class="form-label">Correo</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Escriba su correo" autofocus required/>
+                </div>
+
+                {% if notif %}
+                    {% for message in notif %}
+                        <div class="alert alert-danger" role="alert"><small>{{ message }}</small></div>
+                    {% endfor %}
+                {% endif %}
+
+                <button class="btn btn-primary d-grid w-100">Enviar Link</button>
+              </form>
+              <div class="text-center">
+                <a href="{% url 'login' %}" class="d-flex align-items-center justify-content-center">
+                  <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
+                  Volver
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- /Forgot Password -->
+      {% endblock %}

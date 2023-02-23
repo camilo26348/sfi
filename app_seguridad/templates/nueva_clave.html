@@ -1,0 +1,66 @@
+{% extends 'base_login.html' %}
+{% block content %}
+          <!-- Register Card -->
+          <div class="card">
+            <div class="card-body">
+              <!-- Logo -->
+              <div class="app-brand justify-content-center">
+                <a href="#" class="app-brand-link gap-2">
+                  <span class="app-brand-logo demo">
+
+                  </span>
+                  <span class="app-brand-text demo text-body fw-bolder">miContab</span>
+                </a>
+              </div>
+              <!-- /Logo -->
+              <h4 class="mb-2">{{ subtitle }}</h4>
+              <p class="mb-4">Cree como nueva contraseña algo que pueda recordar facilmente</p>
+
+              <form id="formAuthentication" class="mb-3" method="POST">{% csrf_token %}
+
+
+                <div class="mb-3 form-password-toggle">
+                  <label class="form-label" for="password">Nueva Contraseña</label>
+                  <div class="input-group input-group-merge">
+                    <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" required />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
+                </div>
+
+                <div class="mb-3 form-password-toggle">
+                  <label class="form-label" for="password">Repita la nueva Contraseña</label>
+                  <div class="input-group input-group-merge">
+                    <input type="password" id="password2" class="form-control" name="password2" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" required />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
+                </div>
+
+                {% if notif %}
+                    {% for message in notif %}
+                        <div class="alert alert-danger" role="alert"><small>{{ message }}</small></div>
+                    {% endfor %}
+                {% endif %}
+                <button class="btn btn-primary d-grid w-100">Actualizar</button>
+
+                <script>
+                    var password = document.getElementById("password")
+                      , confirm_password = document.getElementById("password2");
+
+                    function validatePassword(){
+                      if(password.value !== confirm_password.value) {
+                        confirm_password.setCustomValidity("Las contraseñas no coinciden. Verifique");
+                      } else {
+                        confirm_password.setCustomValidity('');
+                      }
+                    }
+
+                    password.onchange = validatePassword;
+                    confirm_password.onkeyup = validatePassword;
+                </script>
+
+              </form>
+
+
+            </div>
+          </div>
+{% endblock %}

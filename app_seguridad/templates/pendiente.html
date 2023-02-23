@@ -1,0 +1,28 @@
+{% extends 'base_login.html' %}
+{% block content %}
+          <!-- Forgot Password -->
+          <div class="card">
+            <div class="card-body">
+              <!-- Logo -->
+              <div class="app-brand justify-content-center">
+                <a href="#" class="app-brand-link gap-2">
+                  <span class="app-brand-logo demo">
+
+                  </span>
+                  <span class="app-brand-text demo text-body fw-bolder">miContab</span>
+                </a>
+              </div>
+              <!-- /Logo -->
+              <h4 class="mb-2">{{ subtitle }}</h4>
+              <p class="mb-4">{{ subtitle2 }}</p>
+
+              <div class="text-center">
+                <a href="{% url 'login' %}" class="btn btn-primary d-grid w-100">
+
+                  Volver
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- /Forgot Password -->
+      {% endblock %}
