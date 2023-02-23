@@ -136,5 +136,3 @@ def enviar_correo_html(id_usuario, contenido):
     except Exception as e:
         print("Error: el mensaje no pudo ser enviado: " + e.__str__())
         return False
-
-

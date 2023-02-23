@@ -133,3 +133,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ca3soft.cu@gmail.com'
 EMAIL_HOST_PASSWORD = 'guougvxtjvfshgwb'
 EMAIL_PORT = 587
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
