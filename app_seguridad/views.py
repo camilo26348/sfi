@@ -102,6 +102,7 @@ def nueva_clave(request, token):
             password = request.POST['password']
             u = User.objects.get(id=t.id_usuario.id)
             u.password=make_password(password)
+            u.estado = 1
             u.save()
             t.delete()
             messages.add_message(request, messages.SUCCESS, 'Su contraseña ha sido cambiada 😉')
