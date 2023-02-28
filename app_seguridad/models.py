@@ -9,6 +9,7 @@ TIPO_TOKEN = [(1 , 'Activar usuario'), (2 , 'Nueva clave')]
 # Create your models here.
 class User (AbstractUser):
     nombre = models.CharField(max_length=255, blank=True, null=True, unique=False, help_text='Nombre(s) y Apellidos')
+    cargo = models.CharField(max_length=255, blank=True, null=True, unique=False, help_text='Cargo del usuario')
     estado = models.IntegerField(unique=False, blank=False, null=False, help_text='', choices=ESTADO, default=1)
     REQUIRED_FIELDS = ['email']
     def __str__(self):
